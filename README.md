@@ -4,6 +4,8 @@
 
 [PHPRedis](https://github.com/phpredis/phpredis) is an extension providing an API for communicating with the Redis key-value store. It is compiled in C.
 
+[PHPRedis for Kohana](https://github.com/Xackery/kohana-phpredis) combines PHPRedis into Kohana modeled after the Database module design.
+
 ## Documentation
 Kohana's documentation can be found at <http://kohanaframework.org/documentation> which also contains an API browser.
 
@@ -13,7 +15,7 @@ Installing PHPRedis can be found at <https://github.com/phpredis/phpredis>.
 
 # Installing/Configuring
 -----
-First, ensure you install PHPRedis and have a working Kohana environment.
+First, ensure you [install PHPRedis](https://github.com/phpredis/phpredis#installingconfiguring) and have a [working Kohana environment](http://kohanaframework.org/3.3/guide/kohana/install).
 
 Inside /application/bootstrap.php:
 Add this line in the modules listing (There will be similar entries near it):
