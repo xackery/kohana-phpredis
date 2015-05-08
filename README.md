@@ -17,8 +17,9 @@ First, ensure you install PHPRedis and have a working Kohana environment.
 
 Inside /application/bootstrap.php:
 Add this line in the modules listing (There will be similar entries near it):
-
+~~~
 'redis'		=> MODPATH . 'redis',
+~~~
 
 Add this line around where the Cookie::salt area is:
 ~~~
@@ -27,3 +28,38 @@ Session::$default = 'redis';
 
 Much like Kohana's database configuration, create a file inside /application/config/ called redis.php
 Change this file to reflect the settings your redis is using (by default, it connects locally).
+
+# Setup Verification
+-----
+Assuming you have a local redis instance going for development, in a command line, type in:
+~~~
+redis-cli
+~~~
+
+This should occur in a prompt like so:
+~~~
+127.0.0.1:6379>
+~~~
+
+Inside this prompt, you can type:
+~~~
+127.0.0.1:6379> keys *
+(empty list or set)
+~~~
+To see all keys currently stored inside redis. It should be empty. If, inside a controller action you do a call to:
+~~~
+Session::instance()->set('test', 'key');
+~~~
+You should now get result data.
+~~~
+127.0.0.1:6379> keys *
+1) "554d4651b9dba6-79472033"
+~~~
+This means a key exists with session data as intended.
+
+You can confirm the expiration using
+~~~
+127.0.0.1:6379> ttl 554d4651b9dba6-79472033
+(integer) 1765
+~~~
+This shows how many seconds until the session expires.
